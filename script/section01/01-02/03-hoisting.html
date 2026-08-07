@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+    <script>
+        // 함수호이스팅: 위 실행 + 아래 선언이어도 함수실행
+        나의함수();
+
+        function 나의함수() {
+            console.log("함수실행");
+        }
+
+        // 변수호이스팅: 위 실행 + 아래선언 시 실행안됨
+        console.log(나의변수);
+        var 나의변수 = "변숫값";
+        console.log(나의변수)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
+

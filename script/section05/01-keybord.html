@@ -1,0 +1,55 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>키보드 감지 실습</title>
+    <style>
+        .puppy {
+            position: absolute;
+            top: 300px;
+            left: 300px;
+    
+            width: 100px;
+            height: 100px;
+        }
+
+    </style>
+    <script>
+        window.addEventListener("keydown", (event) => {
+            const puppy = document.getElementById("puppyid")
+            const puppyStyle = getComputedStyle(puppy)
+            const puppyX = Number(puppyStyle.eft.replace("px", ""))
+            const puppyY = Number(puppyStyle.top.replace("px", ""))
+
+            switch(event.key) {
+                case "ArrowUp": {
+                    // 춘식이를 위로 -20 옮긴다
+                    document.getElementById("puppyid").style = `top: ${(춘식이Y좌표 - 30) / 부스터}px; left: ${춘식이X좌표}px;`
+                    break;
+                }
+                case "ArrowDown": {
+                    // 춘식이를 아래로 +20 옮긴다
+                    document.getElementById("puppyid").style = `top: ${(춘식이Y좌표 + 30) * 부스터 }px; left: ${춘식이X좌표}px;`
+                    break;
+                }
+                case "ArrowLeft": {
+                    // 춘식이를 왼쪽으로 -20 옮긴다
+                    document.getElementById("puppyid").style = `top: ${춘식이Y좌표}px; left: ${(춘식이X좌표 - 30) / 부스터}px;`
+                    break;
+                }
+                case "ArrowRight": {
+                    // 춘식이를 오른쪽으로 +20 옮긴다
+                    document.getElementById("puppyid").style = `top: ${춘식이Y좌표}px; left: ${(춘식이X좌표 + 30) * 부스터}px;`
+                    break;
+                }
+                case "Shift": {
+                    부스터 = 2.0;
+                    break;
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+    <img src="./K.png" class="puppy" id="puppyid">
+</body>
+</html>

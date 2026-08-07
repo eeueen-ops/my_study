@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+    <script>
+        // console.log(나의옛날변수);
+        // var 나의옛날변수 = "옛날변수의값";
+
+        // console.log(나의요즘변수);
+        // console.log(나의요즘변수2);
+        // let 나의요즘변수 = "요즘변수의값"
+        // const 나의요즘변수2 = "요즘변수의값2"
+        console.log(옛날함수1())
+        console.log(요즘함수1())
+        console.log(요즘함수2())
+
+        console.log(옛날함수1)
+        console.log(요즘함수1)
+        console.log(요즘함수2)
+
+        function 옛날함수1() {
+            console.log("옛날함수1")
+        }
+
+        function 요즘함수1() {
+            console.log("요즘함수1")
+        }
+
+        function 요즘함수2() {
+            console.log("요즘함수2")
+        }
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
+
+
+<!-- 
+옛날함수1
+04-hoisting-tdz.html:26 요즘함수1
+04-hoisting-tdz.html:30 요즘함수2
+ƒ 옛날함수1() {
+            console.log("옛날함수1")
+        }
+ƒ 요즘함수1() {
+            console.log("요즘함수1")
+        }
+ƒ 요즘함수2() {
+            console.log("요즘함수2")
+        }
+-->

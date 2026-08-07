@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+    <style>
+        .부모 {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .이미지영역 {
+            background-color: greenyellow;
+        }
+
+        .등록영역 {
+            width: 300px;
+            background-color: skyblue;
+        }
+        @media (max-width:767px) {
+            .부모 {
+                flex-direction: column;
+            }
+            /* 기존 부모 스타일속성 변경이 아니라
+            767일 떄 (기준에 맞을 떄) 해당 속성 추가 */
+            .이미지영역 {
+                order: 2;
+                background-color: coral;
+            }
+            .등록영역 {
+                order: 1;
+            }
+            /* order은 순서 적용 */
+        }
+    </style>
+</head>
+<body>
+    <div class="부모">
+        <div class="이미지영역">
+            <img src="./pic.png" width="150px" height="150px">
+            <img src="./pic.png" width="150px" height="150px">
+            <img src="./pic.png" width="150px" height="150px">
+            <img src="./pic.png" width="150px" height="150px">
+        </div>
+        <div class="등록영역">
+            <h1>강아지 옷 등록하기</h1>
+            옷이름 <input type=" text">
+            <button>등록하기</button>
+        </div>    
+    </div>
+</body>
+</html>

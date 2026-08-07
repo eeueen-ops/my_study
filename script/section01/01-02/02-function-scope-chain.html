@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+    <script>
+        function 바깥함수() {
+            const 바나나 = 10;
+            console.log("바깥함수() 실행", 바나나) 
+
+        console.log("바깥함수() 실행 후 안쪽함수() 실행 전", 바나나)
+
+
+            function 안쪽함수 () {
+                const 바나나 = 50;
+                console.log("안쪽함수() 실행", 바나나)
+            }
+
+
+        안쪽함수()
+
+        console.log("바깥함수() 실행 후 안쪽함수() 실행 후", 바나나)
+
+        안쪽함수()
+
+        }
+        바깥함수()
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
+
+<!-- 
+바깥함수() 실행 10
+바깥함수() 실행 후 안쪽함수() 실행 전 10
+안쪽함수() 실행 50
+바깥함수() 실행 후 안쪽함수() 실행 후 10
+안쪽함수() 실행 50 
+-->

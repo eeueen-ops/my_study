@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오버레이 문제점 리펙토링 개념 예시</title>
+    <style>
+        .image-contaner {
+            margin: 100px;
+            position: relative;
+        }
+        .image {
+            width: 200px; 
+            height: 200px;
+            background-color: skyblue;
+
+        }
+        .delete-button {
+            position: absolute;
+            top: 0px;
+            left: 190px;
+        }
+        .image-explanation {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <div class="image"></div>
+        <button class="delete-button">X</button>
+        <div class="image-explanation">이미지설명</div>
+    </div>
+</body>
+</html>

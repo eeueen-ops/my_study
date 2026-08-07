@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>상세페이지</title>
+    <script>
+        const 쿼리스트링 = location.search;
+        const 잘게나누어담은통 = new URLSearchParams(쿼리스트링);
+        const 일기번호상자 = 잘게나누어담은통.get("my-number")
+
+        alert (
+            `
+            일기번호상자 : ${일기번호상자}의 상세페이지
+            `
+        )
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

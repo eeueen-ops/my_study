@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>윈도우 함수이벤트 리스너 실습 : 스크롤 </title>
+    <script>
+        window.addEventListener("scroll", () => {
+            const 스크롤내려간길이 = window.scrollY
+            console.log(스크롤내려간길이)
+
+            if (스크롤내려간길이 > 0 ) {
+                document.getElementById("image").style.width = "500px";
+            } else {
+                document.getElementById("image").style.width = "1000px";
+            }
+        })
+    </script>
+</head>
+<body>
+    <img id="image" src="./lotto.png">
+</body>
+</html>

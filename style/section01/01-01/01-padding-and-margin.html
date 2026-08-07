@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>패딩과 마진 스타일 실습</title>
+    <style>
+        .박스1 {
+            width: 300px;
+            height: 300px;
+            background-color: green;
+            padding-top: 30px;
+            padding-left: 30px;
+        }
+        .박스2{
+            width: 300px;
+            height: 300px;
+            background-color: blue;
+            margin-top: 30px;
+            margin-left: 30px;
+        }
+
+        .자식박스 {
+            margin-top: 30px;
+            margin-left: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="박스1">
+        <input type="text" />
+    </div>
+    <div class="박스2">
+        <input type="text" class="자식박스"/>
+    </div>
+</body>
+</html>
