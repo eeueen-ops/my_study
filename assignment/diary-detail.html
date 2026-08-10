@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+x<!DOCTYPE html>
 <html lang="ko">
 <head>
     <title>Document</title>
-    <script src="./diary-detail.js"></script>
+    <script src="./diary-detail.js" defer></script>
     <link href="./diary-detail.css" rel="stylesheet">
 </head>
 <body>
@@ -20,8 +20,8 @@
             </div>
             <div class="body__content">
                 <div class="body__content__title">내용</div>
-                <div class="body__content__text">내용이들어갑니다</div>
-                <div class="body__content__copy">
+                <div class="body__content__text" id="diaryContent">내용이들어갑니다</div>
+                <div class="body__content__copy" id="copyBtn">
                     <img>내용 복사
                 </div>
                 <div class="body__content__button">
@@ -39,10 +39,10 @@
                     <div>등록된 회고가 없습니다.</div>
                 </div>
             </div>
-
-        </div>
-        
-            
+        </div>   
+    </div>
+    <div class="copy__toast" id="copyToast">
+        내용이 복사되었습니다.
     </div>
     <div class="footer">
         <div class="footer__content">

@@ -12,15 +12,33 @@ const photo = () => {
     document.getElementById("tabDiary").style.borderBottom = "none"
 
 }
-
 const openModal = (modalType) => {
     document.getElementById(modalType).style.display= 'block'
+
 } 
 const closeModal = (modalType) => {
     document.getElementById(modalType).style.display= 'none'
+
 } 
-
-
+const clearModalContent = () => {
+    let input1 = document.getElementById("diaryTitle").value
+    let input2 = document.getElementById("diaryContent").value  
+    let input3 = document.querySelector('selectEmotion')
+    input1.value = null;
+    input2.value = null;
+    input3.checked === false
+}
+window.addEventListener('keydown', (event)=> {
+    if (event.key === 'Escape' ) {
+        closeModal('modalWrite')
+    }
+} )
+const modalBackground = document.getElementById('modalWrite');
+modalBackground.addEventListener('click', (event) => {
+    if (event.target === modalBackground) {
+        closeModal('modalWrite');
+    }
+});
 const activeSubmit = () => {
     let diaryTitle = document.getElementById("diaryTitle").value.trim();
     let diaryContent = document.getElementById("diaryContent").value.trim();
@@ -39,18 +57,37 @@ const activeSubmit = () => {
         submitBtn.style.color = "#F2F2F2";
     }
 };
+
+
+
+
 const storeDiary = () => {
     let diaryTitle = document.getElementById("diaryTitle").value.trim();
     let diaryContent = document.getElementById("diaryContent").value.trim();
     let emotion = document.querySelector('input[name="emotion"]:checked').value;
-    const diary ={
+    const diary = {
         title: diaryTitle,
         content: diaryContent,
         emotion: emotion
     }
-    let JSON.stringify(diary)
-    const diaryList = ()
-    Push
+    const diaryList = JSON.parse(localStorage.getItem("newDiary")) || [];
+    diaryList.push(diary);
+    localStorage.setItem("newDiary", JSON.stringify(diaryList));
+
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `<img class="card__img" src="./image/1.png">
+    <img class="card__img__delete" src="./image/close_outline_light_m.png" onclick="deleteCard(event)">
+    <div class="card__content"></div>`
+    container.appendChild(card__wrapper);
+    
+    const changeImg = () => {
+        if (emotion === 1) {
+
+        }
+    }
+
+    
 };
 
 
