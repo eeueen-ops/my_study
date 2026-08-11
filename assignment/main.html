@@ -4,6 +4,8 @@
     <title>emotion diary</title>
     <link href="./main.css" rel="stylesheet">
     <script src="./main.js" defer></script>
+    <script src="./main-diary.js" defer></script>
+    <script src="./main-photo,js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -13,56 +15,10 @@
         <div class="body">
             <img class="body__img">
             <div class="body__tab">
-                <div class="tab" id="tabDiary" onclick="diary()">일기보관함</div>
-                <div class="tab" id="tabPhoto" onclick="photo()">사진보관함</div>
+                <div class="tab" id="tabDiary" onclick="switchTab('1')">일기보관함</div>
+                <div class="tab" id="tabPhoto" onclick="switchTab('2')">사진보관함</div>
             </div>
-            <div class="body__menu">
-                <select class="filter__select">
-                    <option selected="true">전체</option>
-                    <option>행복해요</option>
-                    <option>슬퍼요</option>
-                    <option>놀랐어요</option>
-                    <option>화나요</option>
-                    <option>기타</option>
-                </select>
-                <div class="filter__search">
-                    <img src="./image/search_outline_light_m.png" class="filter__search__img">
-                    <input type="text" class="filter__search__text" placeholder="검색어를 입력하세요.">
-                </div>
-                <button class="menu__writebtn" id="diaryWrite" onclick="openModal('modalWrite')">+ 일기쓰기</button>
-            </div>
-            <div class="body__card__wrapper" id="card__wrapper">
-                <div class="card" id="card" onclick="window.location.href='diary-detail.html' ">
-                    <img class="card__img" src="./image/1.png">
-                    <img class="card__img__delete" src="./image/close_outline_light_m.png" onclick="deleteCard(event)">
-                    <div class="card__content"></div>
-                </div>
-                <div class="card" id="card" onclick="window.location.href='diary-detail.html' ">
-                    <img class="card__img" src="./image/1.png">
-                    <img class="card__img__delete" src="./image/close_outline_light_m.png" onclick="deleteCard(event)">
-                    <div class="card__content"></div>
-                </div>
-                <div class="card" id="card" onclick="window.location.href='diary-detail.html' ">
-                    <img class="card__img" src="./image/1.png">
-                    <img class="card__img__delete" src="./image/close_outline_light_m.png" onclick="deleteCard(event)">
-                    <div class="card__content"></div>
-                </div>
-                <div class="card" id="card" onclick="window.location.href='diary-detail.html' ">
-                    <img class="card__img" src="./image/1.png">
-                    <img class="card__img__delete" src="./image/close_outline_light_m.png" onclick="deleteCard(event)">
-                    <div class="card__content"></div>
-                </div>
-                <div class="card" id="card" onclick="window.location.href='diary-detail.html' ">
-                    <img class="card__img" src="./image/1.png">
-                    <img class="card__img__delete" src="./image/close_outline_light_m.png" onclick="deleteCard(event)">
-                    <div class="card__content"></div>
-                </div>
-                <div class="card" id="card" onclick="window.location.href='diary-detail.html' ">
-                    <img class="card__img" src="./image/1.png">
-                    <img class="card__img__delete" src="./image/close_outline_light_m.png" onclick="deleteCard(event)">
-                    <div class="card__content"></div>
-                </div>
-            </div>
+            <div class="body__content" id="componentArea" ></div>
         </div>
         <div class="page__tab">
             
@@ -70,14 +26,14 @@
         <a href="#">
             <img class="body__scroll" src="./image/up_outline_light_xl.png"></img>
         </a>
-        <!-- 일기작성모달 -->
+<!-- 일기작성모달 -->
     </div>
     <div class="modal__background" id="modalWrite">
         <div class="body__modal">
             <div class="writing__title">일기 쓰기</div>
             <div class="writing__select">
                 <div class="writing__select__title">오늘 기분은 어땠나요?</div>
-                <div class="writing__select__radio" id="selectEmition">
+                <div class="writing__select__radio" id="myEmition">
                     <input type="radio" name="emotion" value="1"><label>행복해요</label>   
                     <input type="radio" name="emotion" value="2"> <label>슬퍼요</label>  
                     <input type="radio" name="emotion" value="3"> <label>놀랐어요</label>  
@@ -88,9 +44,9 @@
             
             <div class="writing__content">
                 <div class="writing__content__title">제목</div>
-                <input type="text" id="diaryTitle" class="writing__content__input1" placeholder="제목을 입력해 주세요." oninput="activeSubmit()">
+                <input type="text" id="myTitle" class="writing__content__input1" placeholder="제목을 입력해 주세요." oninput="activeSubmit()">
                 <div class="writing__content__title">내용</div>
-                <textarea id="diaryContent" class="writing__content__input2" placeholder="내용을 입력해 주세요." oninput="activeSubmit()"></textarea>
+                <textarea id="myContent" class="writing__content__input2" placeholder="내용을 입력해 주세요." oninput="activeSubmit()"></textarea>
             </div>
             
             <div class="writing__button">

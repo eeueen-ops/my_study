@@ -1,0 +1,13 @@
+const photoArea = 
+    `
+    <div class="body__menu">
+        <select class="filter__select" id="selectRatio" onchange="photoAspectRatio()">
+            <option selected="true">기본</option>
+            <option>가로형</option>
+            <option>세로형</option>
+        </select>
+    </div>
+    <div class="body__photo__wrapper" id="photoWrapper">
+    </div>
+
+    `

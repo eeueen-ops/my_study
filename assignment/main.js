@@ -1,17 +1,54 @@
-const diary = () => {
-    document.getElementById("tabDiary").style = "color: black;"
-    document.getElementById("tabPhoto").style = "color: #ABABAB;"
-    document.getElementById("tabDiary").style.borderBottom = "2px solid black"
-    document.getElementById("tabPhoto").style.borderBottom = "none"   
+
+
+
+const switchTab = (tab) => {
+    let diaryTab = document.getElementById("tabDiary")
+    let photoTab = document.getElementById("tabPhoto")
+    let componentArea = document.getElementById("componentArea")
+    switch (tab) {
+        case "1" :
+            componentArea.innerHTML = diaryArea
+            diaryTab.style = "color: #000000; borderBottom: 2px solid #000000;"
+            photoTab.style = "color: #ABABAB; border: none;"
+            break;
+        case "2" :
+            componentArea.innerHTML = photoArea
+            photoTab.style = "color: #000000; borderBottom: 2px solid #000000;"
+            diaryTab.style = "color: #ABABAB; border: none;"
+            loadPhoto()
+            break;
+    }
 }
 
-const photo = () => {
-    document.getElementById("tabPhoto").style = "color: black;"
-    document.getElementById("tabDiary").style = "color: #ABABAB;"
-    document.getElementById("tabPhoto").style.borderBottom = "2px solid black"
-    document.getElementById("tabDiary").style.borderBottom = "none"
+const loadPhoto = () => {
+            fetch("https://dog.ceo/api/breeds/image/random/10").then((받아온결과) => {
+                받아온결과.json().then((객체만뽑힌결과) => {
+
+                    const 이미지다운로드주소들 = 객체만뽑힌결과.message
+                    const 상태 = 객체만뽑힌결과.status
+
+                    document.getElementById("photoWrapper").innerHTML = 이미지다운로드주소들.map(el => `
+                        <img src="${el}" class="photos" id="photos" width="640px" />
+                    `).join("")
+                })
+            })
+        }
+
+const photoAspectRatio = () => {
+    let ratio = document.getElementById("selectRatio").value
+    let photos = document.getElementById("photos")
+    if (ratio === "기본" ) {
+        photos.style.aspectRatio = "1 / 1"
+    }
+    if (ratio === "가로형" ) {
+        photos.style.aspectRatio = "4 / 3"
+    }
+    if (ratio === "세로형" ) {
+        photos.style.aspectRatio = "3 / 4"
+    }
 
 }
+
 const openModal = (modalType) => {
     document.getElementById(modalType).style.display= 'block'
 
@@ -40,8 +77,8 @@ modalBackground.addEventListener('click', (event) => {
     }
 });
 const activeSubmit = () => {
-    let diaryTitle = document.getElementById("diaryTitle").value.trim();
-    let diaryContent = document.getElementById("diaryContent").value.trim();
+    let diaryTitle = document.getElementById("myTitle").value.trim();
+    let diaryContent = document.getElementById("myContent").value.trim();
     let emotion = document.querySelector('input[name="emotion"]:checked').value;
     let submitBtn = document.getElementById("writeDiarySubmit");
 
@@ -62,13 +99,13 @@ const activeSubmit = () => {
 
 
 const storeDiary = () => {
-    let diaryTitle = document.getElementById("diaryTitle").value.trim();
-    let diaryContent = document.getElementById("diaryContent").value.trim();
-    let emotion = document.querySelector('input[name="emotion"]:checked').value;
+    let diaryTitle = document.getElementById("myTitle").value.trim();
+    let diaryContent = document.getElementById("myContent").value.trim();
+    let diaryEmotion = document.querySelector('input[name="emotion"]:checked').value;
     const diary = {
         title: diaryTitle,
         content: diaryContent,
-        emotion: emotion
+        emotion: diaryEmotion
     }
     const diaryList = JSON.parse(localStorage.getItem("newDiary")) || [];
     diaryList.push(diary);
@@ -76,7 +113,8 @@ const storeDiary = () => {
 
     const card = document.createElement('div');
     card.className = 'card';
-    card.innerHTML = `<img class="card__img" src="./image/1.png">
+    card.innerHTML =
+    `<img class="card__img" src="./image/1.png">
     <img class="card__img__delete" src="./image/close_outline_light_m.png" onclick="deleteCard(event)">
     <div class="card__content"></div>`
     container.appendChild(card__wrapper);
