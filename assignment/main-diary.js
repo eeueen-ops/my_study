@@ -1,21 +1,41 @@
 const diaryArea = 
     `
     <div class="body__menu">
-        <select class="filter__select">
-            <option selected="true">전체</option>
-            <option>행복해요</option>
-            <option>슬퍼요</option>
-            <option>놀랐어요</option>
-            <option>화나요</option>
-            <option>기타</option>
-        </select>
+        <div class="dropdown__wrapper">
+            <input type="checkbox" class="dropdown__title emotion" id="dropdownTitleEmotion">
+                    <ul class="dropdown__list" id="dropdownList">
+                        <li>
+                            <input type="radio" name="emotionFilter" id="all" onclick="selectDropdownEmotion(event)">
+                            <label for="all">전체</label>
+                        </li>
+                        <li>
+                        <input type="radio" name="emotionFilter" id="happy" onclick="selectDropdownEmotion(event)">
+                            <label for="happy">행복해요</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="emotionFilter" id="sad" onclick="selectDropdownEmotion(event)">
+                            <label for="sad">슬퍼요</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="emotionFilter" id="surprised" onclick="selectDropdownEmotion(event)">
+                            <label for="surprised">놀랐어요</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="emotionFilter" id="upset" onclick="selectDropdownEmotion(event)">
+                            <label for="upset">화났어요</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="emotionFilter" id="etc" onclick="selectDropdownEmotion(event)">
+                            <label for="etc">기타</label>
+                        </li>
+                    </ul>
+        </div>
         <div class="filter__search">
             <img src="./image/search_outline_light_m.png" class="filter__search__img">
             <input type="text" class="filter__search__text" placeholder="검색어를 입력하세요.">
         </div>
         <button class="menu__writebtn" id="diaryWrite" onclick="openModal('modalWrite')">+ 일기쓰기</button>
     </div>
-    
     <div class="body__card__wrapper" id="card__wrapper">
         <div class="card" id="card" onclick="window.location.href='diary-detail.html' ">
             <img class="card__img" src="./image/1.png">
@@ -24,3 +44,5 @@ const diaryArea =
         </div>
     </div>
     `;
+
+    switchTab("1");

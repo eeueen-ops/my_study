@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<>, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        .드롭다운제목 {
+            appearance: none;
+            width: 150px;
+            height: 40px;
+            border: 2px solid green;
+            border-radius: 10px;
+            padding: 10px;
+
+            --철수의css변수: "선택하세요"
+        }
+        .드롭다운제목::after {
+            content: var(--철수의css변수);
+        }
+        .드롭다운제목:checked+ul {
+            display: block;
+            /* 체크 시 드롭다운 목록이 보임 */
+        }
+        .드롭다운목록 {
+            display: none;
+            width: 150px;
+            border: 2px solid green;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .드롭다운목록 input {
+            display: none;
+        }
+        .드롭다운목록 label {
+            display: block;
+            padding: 10px;
+            /* label은 인라인엘리먼트라 높이가없음 */
+        }
+        .드롭다운목록 label:hover {
+            background-color: gold;
+        }
+    </style>
+    <script>
+        const 선택가능 = (event) => {
+            document.getElementById("드롭다운제목아이디").style = `--철수의CSS변수: "${event.target.id}"`;
+            document.getElementById("드롭다운제목아이디").click();
+        }
+    </script>
+</head>
+<body>
+    <input type="checkbox" class="드롭다운제목" id="드롭다운제목아이디">
+    <ul class="드롭다운목록">
+        <li>
+            <input type="radio" name="선택그룹" id="사과클릭" onclick="선택가능(event)">
+            <label for="사과클릭">사과</label>
+        </li>
+        <li>
+            <input type="radio" name="선택그룹" id="바나나클릭" onclick="선택가능(event)">
+            <label for="바나나클릭">바나나</label>
+        </li>
+        <li>
+            <input type="radio" name="선택그룹" id="포도클릭" onclick="선택가능(event)">
+            <label for="포도클릭">포도</label>
+        </li>
+    </ul>
+</body>
+</html>
+
+
+
+
+

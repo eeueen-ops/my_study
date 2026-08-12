@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>액센트 컬러 예제</title>
+    <style>
+        .체크박스 {
+            accent-color: lime;
+            /* 백그라운드컬러는 적용 안됨 */
+        }
+        .라디오버튼 {
+            accent-color: orangered;
+        }
+        .크기조절바 {
+            accent-color: gold;
+        }
+        .프로그레스바 {
+            accent-color: deepskyblue;
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" class="체크박스" />
+    <input type="radio" class="라디오버튼" />
+    <input type="range" max="100" value="70" class="크기조절바" />
+    <progress max="100" value="70" class="프로그레스바"></progress>
+</body>
+</html>

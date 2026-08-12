@@ -12,7 +12,10 @@ body {
     align-items: center;
     position: relative;
 }
-.body__scroll {
+button {
+    cursor: pointer;
+}
+.scroll {
     width: 40px;
     height: 40px;
     position: fixed;
@@ -26,13 +29,24 @@ body {
 }
 .header {
     width: 100%;
-    display: flex;
-    flex-direction: column;
     position: fixed;
-
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.header__content {
+    width: 1168px;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 .header__title {
-    width: 100%;
+    width: 120px;
     height: 60px;
     font-weight: 700;
     font-style: Bold;
@@ -40,7 +54,41 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-
+}
+.header__darkmode {
+    width: 121px;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: #1C1C1C;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: -1%;
+}
+.toggle {
+    appearance: none;
+    width: 58px;
+    height: 32px;
+    background-color: #E4E4E4;
+    border-radius: 100px;
+    padding: 2px;
+}
+.toggle::after {
+    display: block;
+    content: "";
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    transition: transform 0.3s ease;
+}
+.toggle:checked{
+    background-color: #3AD84A;
+}
+.toggle:checked::after {
+    transform: translateX(calc(100% - 1px - 1px));
 }
 .body {
     width: 100%;
@@ -77,25 +125,75 @@ body {
     align-items: center;
     cursor: pointer;
 }
-#tabDiary {
+/* #tabDiary {
     border-bottom: 2px solid black;
     color: black;
-}
+} */
 .body__menu {
     width: 1168px;
-    height: 48px;
+    /* height: 48px; */
     display: flex;
     flex-direction: row;
     margin-bottom: 42px;
 }
-.filter__select {
+.dropdown__wrapper{
+    display: flex;
+    flex-direction: column;
+
+}
+.dropdown__title {
     width: 120px;
     height: 48px;
     border-radius: 8px;
     border: 1px solid #C7C7C7;
     padding: 12px 10px;
     margin-right: 8px;
+
+    appearance: none;
+
+    font-weight: 500;
+    font-size: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
+:root {
+    --dropdownVariableEmotion: "전체";
+    --dropdownVariableRatio: "기본형";
+}
+.emotion::after {
+    content: var(--dropdownVariableEmotion);
+}
+.ratio::after {
+    content: var(--dropdownVariableRatio);
+}
+.dropdown__title:checked + ul {
+    display: block;
+}
+.dropdown__list {
+    width: 120px;
+    border-radius: 8px;
+    border: 1px solid #C7C7C7;
+    overflow: hidden;
+    display: none;
+    list-style: none;
+    padding: 0px;
+}
+.dropdown__list input {
+    display: none;
+}
+.dropdown__list label {
+    display: block;
+    padding: 10px;
+}
+.dropdown__list :hover {
+    background-color: #3AB50F0D;
+}
+li {
+    width: 120px;
+    height: 48x;
+}
+
 .filter__search {
     width: 914px;
     height: 48px;
@@ -194,7 +292,6 @@ body {
     border-radius: 24px;
     aspect-ratio: 1 / 1;
     object-fit: cover;
-
 }
 
 
@@ -432,7 +529,7 @@ writing__select__radio {
         width: 739px;
         margin: 0px 0px 16px 0px;
     }
-    .filter__select {
+    .dropdown__wrapper {
         order: 2;
     }
 
