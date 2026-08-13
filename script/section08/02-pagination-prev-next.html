@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>페이지번호 실습</title>
+    <script>
+        let 시작페이지 = 1
+        const 이전페이지기능 = () => {
+            시작페이지 = 시작페이지 - 10;
+            페이지버튼그리기()
+        }
+        const 다음페이지기능 = () => {
+            시작페이지 = 시작페이지 + 10;
+            페이지버튼그리기()
+        }
+
+        const 페이지버튼그리기 = () => {
+            const 철수상자 = new Array(10).fill("철수")
+
+            const 페이지들 = 철수상자.map ((el, index)=>`
+                <button>${시작페이지 + index}</button>
+            `).join("")
+            document.getElementById("페이지보여주는곳").innerHTML = 페이지들
+        }
+        window.onload = () => {
+            페이지버튼그리기()
+        }
+    </script>
+</head>
+<body>
+    <button onclick="이전페이지기능()">이전페이지</button>
+    <span id="페이지보여주는곳"></span>
+    <button onclick="다음페이지기능()">다음페이지</button>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>페이지번호 실습</title>
+    <script>
+        window.onload = () => {
+
+            const 철수상자 = new Array(10).fill("철수")
+
+            const 페이지들 = 철수상자.map((el, index) => `
+                <button>${index + 1}</button>
+            `).join("")
+
+            document.getElementById("페이지보여주는곳").innerHTML = 페이지들
+
+        }
+
+
+    </script>
+</head>
+<body>
+    <div id="페이지보여주는곳"></div>
+</body>
+</html>
+

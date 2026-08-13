@@ -36,13 +36,12 @@ const diaryArea =
         </div>
         <button class="menu__writebtn" id="diaryWrite" onclick="openModal('modalWrite')">+ 일기쓰기</button>
     </div>
-    <div class="body__card__wrapper" id="card__wrapper">
-        <div class="card" id="card" onclick="window.location.href='diary-detail.html' ">
-            <img class="card__img" src="./image/1.png">
-            <img class="card__img__delete" src="./image/close_outline_light_m.png" onclick="deleteCard(event)">
-            <div class="card__content"></div>
-        </div>
+    
+    <div class="body__card__wrapper" id="cardWrapper"></div>
+
+    <div class="page__tab" id="pageBtnWrapper">
+        <button clss="page__tab__move" id="pastPage"></button>
+        <span class page__tab__number id="pageBtn"></span>
+        <button class="page__tab__move" id="nextPage"></button>
     </div>
     `;
-
-    switchTab("1");

@@ -36,6 +36,7 @@ button {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    z-index: 100000;
 }
 .header__content {
     width: 1168px;
@@ -230,6 +231,9 @@ li {
 .body__content {
     width: 100%;
     height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .body__card__wrapper {
     width: auto;
@@ -244,10 +248,7 @@ li {
     width: 274px;
     height: 296px;
     border-radius: 16px;
-    position: relative;
-
-    background-color: aqua;
-    
+    position: relative; 
 }
 .card:hover {
     transform: scale(1.03);
@@ -259,6 +260,8 @@ li {
     position: absolute;
     top: 0px;
     left: 0px;
+    object-fit: cover;
+
 }
 .card__img__delete {
     width: 24px;
@@ -268,15 +271,53 @@ li {
     right: 12px;        
 }
 .card__content {
+    width: 274px;
+    height: 56px;
     padding: 0px 8px;
-    margin: 16px 0px;
+    position: absolute;
+    bottom: 16px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
+.card__content__subtitle {
+    width: 258px;
+    height: 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.card__content__subtitle__emotion{
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -1%;
+}
+.card__content__subtitle__date{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -1%;
+}
+.card__content__title {
+    width: 258px;
+    height: 24px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -1%;
+    color: #000000;
+
+}
+
 .page__tab {
-    width: 100%;
+    width: 288px;
     height: 32px;
-    margin: 40px 0px;
+    margin: 40px 816px;
     background-color: aqua;
 }
+
 
 .body__photo__wrapper {
     width: 100%;
@@ -545,7 +586,6 @@ writing__select__radio {
         height: 296px;
     }
     .card__img {
-        object-fit: cover;
     }
     .footer__content {
         display: none;
