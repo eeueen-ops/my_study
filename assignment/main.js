@@ -240,7 +240,7 @@ const createDiaryPage = (clickedPage) => {
         const skippedCardNum = (clickedPage - 1) * 12
         const skippedCardIndex = skippedCardNum - 1
 
-        return skippedIndex < index && index <= skippedIndex + 12
+        return skippedCardIndex < index && index <= skippedCardIndex + 12
     });
 
     document.getElementById("cardWrapper").innerHTML = currentPageDiaryList.map(diary => createCard(diary) ).join("")
