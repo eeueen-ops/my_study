@@ -3,9 +3,9 @@
 <head>
     <title>emotion diary</title>
     <link href="./main.css" rel="stylesheet">
+    <script src="./main.js" defer></script>
     <script src="./main-diary.js" defer></script>
     <script src="./main-photo.js" defer></script>
-    <script src="./main.js" defer></script>
 </head>
 <body>
     <!-- 상단영역 fixed -->
@@ -20,6 +20,10 @@
         </div>
     </div>
     <div class="container">
+        <!-- 상단 스크롤 버튼 -->
+        <a href="#">
+            <img class="scroll" src="./image/up_outline_light_xl.png"></img>
+        </a>
 
         <!-- 중앙 영역 -->
         <div class="body">
@@ -34,13 +38,6 @@
             <!-- 컴포넌트영역 -->
             <div class="body__content" id="componentArea" ></div>
         </div>
-
-        
-        
-        <!-- 상단 스크롤 버튼 -->
-        <a href="#">
-            <img class="scroll" src="./image/up_outline_light_xl.png"></img>
-        </a>
     </div>
 
     <!-- 하단영역 -->
@@ -101,7 +98,7 @@
             <div class="modal__alert_subtitle">일기 등록을 취소하시겠어요?</div>
             <div class="modal__alert__button">
                 <div class="modal__alert__button__continue" onclick="closeModal('modalClose')">계속 작성</div>
-                <div class="modal__alert__button__quit" onclick="closeModal('modalClose'); closeModal('modalWrite'); clearModalContent();">등록 취소</div>
+                <div class="modal__alert__button__quit" onclick="closeModalAll(); clearModalContent();">등록 취소</div>
             </div>
         </div>
     </div>
@@ -111,10 +108,21 @@
         <div class="body__modal__alert">
             <div class="modal__alert__title">일기 등록 완료</div>
             <div class="modal__alert_subtitle">등록이 완료되었습니다.</div>
-            <div class="modal__alert__button__submit" onclick="closeModal('modalSubmit'); closeModal('modalWrite');">확인</div>
+            <div class="modal__alert__button__submit" onclick="closeModalAll();">확인</div>
         </div>
     </div>
 
+<!-- 삭제버튼 클릭 시 모달 -->
+    <div class="modal__background" id="modalDelete">
+        <div class="body__modal__alert">
+            <div class="modal__alert__title">일기 삭제</div>
+            <div class="modal__alert_subtitle">일기를 삭제하시겠어요?</div>
+            <div class="modal__alert__button">
+                <div class="modal__alert__button__continue" onclick="closeModal('modalDelete')">취소</div>
+                <div class="modal__alert__button__quit" onclick="deleteCard(event); closeModalAll();">삭제</div>
+            </div>
+        </div>
+    </div>
     
 </body>
 </html>

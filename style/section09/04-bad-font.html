@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폰트 실습</title>
+    <style>
+        @font-face {
+            font-family: '지용폰트';
+            src: url('./00-myfont02-thick.woff2');
+        }
+        @font-face {
+            font-family: '맹구폰트';
+            src: url('./00-myfont03-cross-browsing-bad.ttf');
+        }
+        * {
+            font-family: '맹구폰트'
+        }
+        FOIT방식{
+            font-family: '지용폰트';
+            font-display: block;
+
+        }
+        FOUT방식{
+            font-family: '지용폰트';
+            font-display: swap;
+        }
+    </style>
+</head>
+<body>
+    <div class="FOIT방식">안녕하세요</div>
+    <div class="FOUT방식">안녕하세요</div>
+</body>
+</html>

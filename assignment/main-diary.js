@@ -32,7 +32,8 @@ const diaryArea =
         </div>
         <div class="filter__search">
             <img src="./image/search_outline_light_m.png" class="filter__search__img">
-            <input type="text" class="filter__search__text" placeholder="검색어를 입력하세요.">
+            <input type="text" class="filter__search__text" id="searchBox" placeholder="검색어를 입력하세요."
+            oninput="search(event)">
         </div>
         <button class="menu__writebtn" id="diaryWrite" onclick="openModal('modalWrite')">+ 일기쓰기</button>
     </div>
@@ -40,8 +41,8 @@ const diaryArea =
     <div class="body__card__wrapper" id="cardWrapper"></div>
 
     <div class="page__tab" id="pageBtnWrapper">
-        <button clss="page__tab__move" id="pastPage"></button>
+        <button class="page__tab__move" id="pastPage" onclick="pastPage()"></button>
         <span class page__tab__number id="pageBtn"></span>
-        <button class="page__tab__move" id="nextPage"></button>
+        <button class="page__tab__move" id="nextPage" onclick="nextPage()"></button>
     </div>
     `;

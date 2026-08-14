@@ -36,7 +36,6 @@ button {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    z-index: 100000;
 }
 .header__content {
     width: 1168px;
@@ -126,10 +125,6 @@ button {
     align-items: center;
     cursor: pointer;
 }
-/* #tabDiary {
-    border-bottom: 2px solid black;
-    color: black;
-} */
 .body__menu {
     width: 1168px;
     /* height: 48px; */
@@ -236,19 +231,21 @@ li {
     align-items: center;
 }
 .body__card__wrapper {
-    width: auto;
+    width: 100%;
     height: auto;
     display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
     gap: 36px 24px;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    min-height: 400px
+    min-height: 400px;
 }
 .card {
     width: 274px;
     height: 296px;
     border-radius: 16px;
     position: relative; 
+    /* z-index: -1; */
 }
 .card:hover {
     transform: scale(1.03);
@@ -316,8 +313,29 @@ li {
     height: 32px;
     margin: 40px 816px;
     background-color: aqua;
-}
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
+}
+.page__tab__move{
+    width: 24px;
+    height: 24px;
+}
+.page__tab__button {
+    width: 32px;
+    height: 32px;
+    margin: 0px 8px;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background-color: #FFFFFF;
+    color: #777777;
+}
+.page__tab__button:active {
+    background-color: #F2F2F2;
+    color: #000000;
+}
 
 .body__photo__wrapper {
     width: 100%;
@@ -585,9 +603,17 @@ writing__select__radio {
         width: 100%;
         height: 296px;
     }
-    .card__img {
-    }
     .footer__content {
         display: none;
+    }
+    .body__modal {
+        width: 739px;
+        height: auto;
+        margin: 0px 20px;
+    }
+    .writing__select__radio {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
     }
 }   

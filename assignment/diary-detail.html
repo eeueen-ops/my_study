@@ -2,25 +2,469 @@ x<!DOCTYPE html>
 <html lang="ko">
 <head>
     <title>Document</title>
-    <script src="./diary-detail.js" defer></script>
-    <link href="./diary-detail.css" rel="stylesheet">
+    <script defer>
+
+
+        const sampleDiary = [
+        { diaryNum: 1, emotionValue: 2, emotion: "슬퍼요", date: "2026. 08. 12", title: "비가 와서 조금 울적했던 날", content: "비 오는 창밖을 보며 조용히 하루를 보냈다." },
+        { diaryNum: 2, emotionValue: 3, emotion: "놀랐어요", date: "2026. 08. 12", title: "친구가 깜짝 선물을 주었다", content: "생각하지 못한 선물을 받아서 정말 놀랐다." },
+        { diaryNum: 3, emotionValue: 4, emotion: "화나요", date: "2026. 08. 12", title: "버스를 눈앞에서 놓쳤다", content: "조금만 빨리 나올 걸 하는 생각이 들었다." },
+        { diaryNum: 4, emotionValue: 1,emotion: "행복해요", date: "2026. 08. 12", title: "좋아하는 사람들과 맛있는 저녁", content: "함께 이야기하고 웃어서 행복한 하루였다." },
+        { diaryNum: 5, emotionValue: 5, emotion: "기타", date: "2026. 08. 11", title: "오늘은 생각이 많았던 하루", content: "앞으로 하고 싶은 일을 천천히 정리해 보았다." },
+        { diaryNum: 6, emotionValue: 3, emotion: "놀랐어요", date: "2026. 08. 11", title: "갑자기 눈이 내리기 시작했다", content: "봄인 줄 알았는데 눈이 와서 신기했다." },
+        { diaryNum: 7, emotionValue: 4, emotion: "화나요", date: "2026. 08. 11", title: "할 일이 한꺼번에 몰려왔다", content: "하나씩 차근차근 해 보기로 마음먹었다." },
+        { diaryNum: 8, emotionValue: 1, emotion: "행복해요", date: "2026. 08. 11", title: "산책길에서 예쁜 꽃을 발견했다", content: "작은 꽃 덕분에 기분이 좋아졌다." },
+        { diaryNum: 9, emotionValue: 2, emotion: "슬퍼요", date: "2026. 08. 10", title: "기대했던 약속이 취소되었다", content: "아쉬웠지만 집에서 편안하게 쉬었다." },
+        { diaryNum: 10, emotionValue: 4, emotion: "화나요", date: "2026. 08. 10", title: "컴퓨터가 갑자기 멈춰 버렸다", content: "작성하던 글을 잃어서 속상했다." },
+        { diaryNum: 11, emotionValue: 1, emotion: "행복해요", date: "2026. 08. 10", title: "오랜만에 푹 쉬었던 일요일", content: "늦잠도 자고 좋아하는 영화도 보았다." },
+
+            { diaryNum: 1, emotionValue: 2, emotion: "슬퍼요", date: "2026. 08. 12", title: "비가 와서 조금 울적했던 날", content: "비 오는 창밖을 보며 조용히 하루를 보냈다." },
+        { diaryNum: 2, emotionValue: 3, emotion: "놀랐어요", date: "2026. 08. 12", title: "친구가 깜짝 선물을 주었다", content: "생각하지 못한 선물을 받아서 정말 놀랐다." },
+        { diaryNum: 3, emotionValue: 4, emotion: "화나요", date: "2026. 08. 12", title: "버스를 눈앞에서 놓쳤다", content: "조금만 빨리 나올 걸 하는 생각이 들었다." },
+        { diaryNum: 4, emotionValue: 1,emotion: "행복해요", date: "2026. 08. 12", title: "좋아하는 사람들과 맛있는 저녁", content: "함께 이야기하고 웃어서 행복한 하루였다." },
+        { diaryNum: 5, emotionValue: 5, emotion: "기타", date: "2026. 08. 11", title: "오늘은 생각이 많았던 하루", content: "앞으로 하고 싶은 일을 천천히 정리해 보았다." },
+        { diaryNum: 6, emotionValue: 3, emotion: "놀랐어요", date: "2026. 08. 11", title: "갑자기 눈이 내리기 시작했다", content: "봄인 줄 알았는데 눈이 와서 신기했다." },
+        { diaryNum: 7, emotionValue: 4, emotion: "화나요", date: "2026. 08. 11", title: "할 일이 한꺼번에 몰려왔다", content: "하나씩 차근차근 해 보기로 마음먹었다." },
+        { diaryNum: 8, emotionValue: 1, emotion: "행복해요", date: "2026. 08. 11", title: "산책길에서 예쁜 꽃을 발견했다", content: "작은 꽃 덕분에 기분이 좋아졌다." },
+        { diaryNum: 9, emotionValue: 2, emotion: "슬퍼요", date: "2026. 08. 10", title: "기대했던 약속이 취소되었다", content: "아쉬웠지만 집에서 편안하게 쉬었다." },
+        { diaryNum: 10, emotionValue: 4, emotion: "화나요", date: "2026. 08. 10", title: "컴퓨터가 갑자기 멈춰 버렸다", content: "작성하던 글을 잃어서 속상했다." },
+        { diaryNum: 11, emotionValue: 1, emotion: "행복해요", date: "2026. 08. 10", title: "오랜만에 푹 쉬었던 일요일", content: "늦잠도 자고 좋아하는 영화도 보았다." },
+            { diaryNum: 1, emotionValue: 2, emotion: "슬퍼요", date: "2026. 08. 12", title: "비가 와서 조금 울적했던 날", content: "비 오는 창밖을 보며 조용히 하루를 보냈다." },
+        { diaryNum: 2, emotionValue: 3, emotion: "놀랐어요", date: "2026. 08. 12", title: "친구가 깜짝 선물을 주었다", content: "생각하지 못한 선물을 받아서 정말 놀랐다." },
+        { diaryNum: 3, emotionValue: 4, emotion: "화나요", date: "2026. 08. 12", title: "버스를 눈앞에서 놓쳤다", content: "조금만 빨리 나올 걸 하는 생각이 들었다." },
+        { diaryNum: 4, emotionValue: 1,emotion: "행복해요", date: "2026. 08. 12", title: "좋아하는 사람들과 맛있는 저녁", content: "함께 이야기하고 웃어서 행복한 하루였다." },
+        { diaryNum: 5, emotionValue: 5, emotion: "기타", date: "2026. 08. 11", title: "오늘은 생각이 많았던 하루", content: "앞으로 하고 싶은 일을 천천히 정리해 보았다." },
+        { diaryNum: 6, emotionValue: 3, emotion: "놀랐어요", date: "2026. 08. 11", title: "갑자기 눈이 내리기 시작했다", content: "봄인 줄 알았는데 눈이 와서 신기했다." },
+        { diaryNum: 7, emotionValue: 4, emotion: "화나요", date: "2026. 08. 11", title: "할 일이 한꺼번에 몰려왔다", content: "하나씩 차근차근 해 보기로 마음먹었다." },
+        { diaryNum: 8, emotionValue: 1, emotion: "행복해요", date: "2026. 08. 11", title: "산책길에서 예쁜 꽃을 발견했다", content: "작은 꽃 덕분에 기분이 좋아졌다." },
+        { diaryNum: 9, emotionValue: 2, emotion: "슬퍼요", date: "2026. 08. 10", title: "기대했던 약속이 취소되었다", content: "아쉬웠지만 집에서 편안하게 쉬었다." },
+        { diaryNum: 10, emotionValue: 4, emotion: "화나요", date: "2026. 08. 10", title: "컴퓨터가 갑자기 멈춰 버렸다", content: "작성하던 글을 잃어서 속상했다." },
+        { diaryNum: 11, emotionValue: 1, emotion: "행복해요", date: "2026. 08. 10", title: "오랜만에 푹 쉬었던 일요일", content: "늦잠도 자고 좋아하는 영화도 보았다." },
+            { diaryNum: 1, emotionValue: 2, emotion: "슬퍼요", date: "2026. 08. 12", title: "비가 와서 조금 울적했던 날", content: "비 오는 창밖을 보며 조용히 하루를 보냈다." },
+        { diaryNum: 2, emotionValue: 3, emotion: "놀랐어요", date: "2026. 08. 12", title: "친구가 깜짝 선물을 주었다", content: "생각하지 못한 선물을 받아서 정말 놀랐다." },
+        { diaryNum: 3, emotionValue: 4, emotion: "화나요", date: "2026. 08. 12", title: "버스를 눈앞에서 놓쳤다", content: "조금만 빨리 나올 걸 하는 생각이 들었다." },
+        { diaryNum: 4, emotionValue: 1,emotion: "행복해요", date: "2026. 08. 12", title: "좋아하는 사람들과 맛있는 저녁", content: "함께 이야기하고 웃어서 행복한 하루였다." },
+        { diaryNum: 5, emotionValue: 5, emotion: "기타", date: "2026. 08. 11", title: "오늘은 생각이 많았던 하루", content: "앞으로 하고 싶은 일을 천천히 정리해 보았다." },
+        { diaryNum: 6, emotionValue: 3, emotion: "놀랐어요", date: "2026. 08. 11", title: "갑자기 눈이 내리기 시작했다", content: "봄인 줄 알았는데 눈이 와서 신기했다." },
+        { diaryNum: 7, emotionValue: 4, emotion: "화나요", date: "2026. 08. 11", title: "할 일이 한꺼번에 몰려왔다", content: "하나씩 차근차근 해 보기로 마음먹었다." },
+        { diaryNum: 8, emotionValue: 1, emotion: "행복해요", date: "2026. 08. 11", title: "산책길에서 예쁜 꽃을 발견했다", content: "작은 꽃 덕분에 기분이 좋아졌다." },
+        { diaryNum: 9, emotionValue: 2, emotion: "슬퍼요", date: "2026. 08. 10", title: "기대했던 약속이 취소되었다", content: "아쉬웠지만 집에서 편안하게 쉬었다." },
+        { diaryNum: 10, emotionValue: 4, emotion: "화나요", date: "2026. 08. 10", title: "컴퓨터가 갑자기 멈춰 버렸다", content: "작성하던 글을 잃어서 속상했다." },
+        { diaryNum: 11, emotionValue: 1, emotion: "행복해요", date: "2026. 08. 10", title: "오랜만에 푹 쉬었던 일요일", content: "늦잠도 자고 좋아하는 영화도 보았다." },
+            { diaryNum: 1, emotionValue: 2, emotion: "슬퍼요", date: "2026. 08. 12", title: "비가 와서 조금 울적했던 날", content: "비 오는 창밖을 보며 조용히 하루를 보냈다." },
+        { diaryNum: 2, emotionValue: 3, emotion: "놀랐어요", date: "2026. 08. 12", title: "친구가 깜짝 선물을 주었다", content: "생각하지 못한 선물을 받아서 정말 놀랐다." },
+        { diaryNum: 3, emotionValue: 4, emotion: "화나요", date: "2026. 08. 12", title: "버스를 눈앞에서 놓쳤다", content: "조금만 빨리 나올 걸 하는 생각이 들었다." },
+        { diaryNum: 4, emotionValue: 1,emotion: "행복해요", date: "2026. 08. 12", title: "좋아하는 사람들과 맛있는 저녁", content: "함께 이야기하고 웃어서 행복한 하루였다." },
+        { diaryNum: 5, emotionValue: 5, emotion: "기타", date: "2026. 08. 11", title: "오늘은 생각이 많았던 하루", content: "앞으로 하고 싶은 일을 천천히 정리해 보았다." },
+        { diaryNum: 6, emotionValue: 3, emotion: "놀랐어요", date: "2026. 08. 11", title: "갑자기 눈이 내리기 시작했다", content: "봄인 줄 알았는데 눈이 와서 신기했다." },
+        { diaryNum: 7, emotionValue: 4, emotion: "화나요", date: "2026. 08. 11", title: "할 일이 한꺼번에 몰려왔다", content: "하나씩 차근차근 해 보기로 마음먹었다." },
+        { diaryNum: 8, emotionValue: 1, emotion: "행복해요", date: "2026. 08. 11", title: "산책길에서 예쁜 꽃을 발견했다", content: "작은 꽃 덕분에 기분이 좋아졌다." },
+        { diaryNum: 9, emotionValue: 2, emotion: "슬퍼요", date: "2026. 08. 10", title: "기대했던 약속이 취소되었다", content: "아쉬웠지만 집에서 편안하게 쉬었다." },
+        { diaryNum: 10, emotionValue: 4, emotion: "화나요", date: "2026. 08. 10", title: "컴퓨터가 갑자기 멈춰 버렸다", content: "작성하던 글을 잃어서 속상했다." },
+        { diaryNum: 11, emotionValue: 1, emotion: "행복해요", date: "2026. 08. 10", title: "오랜만에 푹 쉬었던 일요일", content: "늦잠도 자고 좋아하는 영화도 보았다." },
+            { diaryNum: 1, emotionValue: 2, emotion: "슬퍼요", date: "2026. 08. 12", title: "비가 와서 조금 울적했던 날", content: "비 오는 창밖을 보며 조용히 하루를 보냈다." },
+        { diaryNum: 2, emotionValue: 3, emotion: "놀랐어요", date: "2026. 08. 12", title: "친구가 깜짝 선물을 주었다", content: "생각하지 못한 선물을 받아서 정말 놀랐다." },
+        { diaryNum: 3, emotionValue: 4, emotion: "화나요", date: "2026. 08. 12", title: "버스를 눈앞에서 놓쳤다", content: "조금만 빨리 나올 걸 하는 생각이 들었다." },
+        { diaryNum: 4, emotionValue: 1,emotion: "행복해요", date: "2026. 08. 12", title: "좋아하는 사람들과 맛있는 저녁", content: "함께 이야기하고 웃어서 행복한 하루였다." },
+        { diaryNum: 5, emotionValue: 5, emotion: "기타", date: "2026. 08. 11", title: "오늘은 생각이 많았던 하루", content: "앞으로 하고 싶은 일을 천천히 정리해 보았다." },
+        { diaryNum: 6, emotionValue: 3, emotion: "놀랐어요", date: "2026. 08. 11", title: "갑자기 눈이 내리기 시작했다", content: "봄인 줄 알았는데 눈이 와서 신기했다." },
+        { diaryNum: 7, emotionValue: 4, emotion: "화나요", date: "2026. 08. 11", title: "할 일이 한꺼번에 몰려왔다", content: "하나씩 차근차근 해 보기로 마음먹었다." },
+        { diaryNum: 8, emotionValue: 1, emotion: "행복해요", date: "2026. 08. 11", title: "산책길에서 예쁜 꽃을 발견했다", content: "작은 꽃 덕분에 기분이 좋아졌다." },
+        { diaryNum: 9, emotionValue: 2, emotion: "슬퍼요", date: "2026. 08. 10", title: "기대했던 약속이 취소되었다", content: "아쉬웠지만 집에서 편안하게 쉬었다." },
+        { diaryNum: 10, emotionValue: 4, emotion: "화나요", date: "2026. 08. 10", title: "컴퓨터가 갑자기 멈춰 버렸다", content: "작성하던 글을 잃어서 속상했다." },
+        { diaryNum: 11, emotionValue: 1, emotion: "행복해요", date: "2026. 08. 10", title: "오랜만에 푹 쉬었던 일요일", content: "늦잠도 자고 좋아하는 영화도 보았다." },
+            { diaryNum: 1, emotionValue: 2, emotion: "슬퍼요", date: "2026. 08. 12", title: "비가 와서 조금 울적했던 날", content: "비 오는 창밖을 보며 조용히 하루를 보냈다." },
+        { diaryNum: 2, emotionValue: 3, emotion: "놀랐어요", date: "2026. 08. 12", title: "친구가 깜짝 선물을 주었다", content: "생각하지 못한 선물을 받아서 정말 놀랐다." },
+        { diaryNum: 3, emotionValue: 4, emotion: "화나요", date: "2026. 08. 12", title: "버스를 눈앞에서 놓쳤다", content: "조금만 빨리 나올 걸 하는 생각이 들었다." },
+        { diaryNum: 4, emotionValue: 1,emotion: "행복해요", date: "2026. 08. 12", title: "좋아하는 사람들과 맛있는 저녁", content: "함께 이야기하고 웃어서 행복한 하루였다." },
+        { diaryNum: 5, emotionValue: 5, emotion: "기타", date: "2026. 08. 11", title: "오늘은 생각이 많았던 하루", content: "앞으로 하고 싶은 일을 천천히 정리해 보았다." },
+        { diaryNum: 6, emotionValue: 3, emotion: "놀랐어요", date: "2026. 08. 11", title: "갑자기 눈이 내리기 시작했다", content: "봄인 줄 알았는데 눈이 와서 신기했다." },
+        { diaryNum: 7, emotionValue: 4, emotion: "화나요", date: "2026. 08. 11", title: "할 일이 한꺼번에 몰려왔다", content: "하나씩 차근차근 해 보기로 마음먹었다." },
+        { diaryNum: 8, emotionValue: 1, emotion: "행복해요", date: "2026. 08. 11", title: "산책길에서 예쁜 꽃을 발견했다", content: "작은 꽃 덕분에 기분이 좋아졌다." },
+        { diaryNum: 9, emotionValue: 2, emotion: "슬퍼요", date: "2026. 08. 10", title: "기대했던 약속이 취소되었다", content: "아쉬웠지만 집에서 편안하게 쉬었다." },
+        { diaryNum: 10, emotionValue: 4, emotion: "화나요", date: "2026. 08. 10", title: "컴퓨터가 갑자기 멈춰 버렸다", content: "작성하던 글을 잃어서 속상했다." },
+        { diaryNum: 11, emotionValue: 1, emotion: "행복해요", date: "2026. 08. 10", title: "오랜만에 푹 쉬었던 일요일", content: "늦잠도 자고 좋아하는 영화도 보았다." }
+
+        ];
+        // 복사버튼 토스트
+        const openToast = () => {
+            const copyToast = document.getElementById("copyToast");
+            copyToast.classList.add("show");
+            setTimeout(() => {
+                copyToast.classList.remove("show");
+            }, 3000);
+        };
+
+        // 일기 목록 불러오기
+        let diaryList;
+        const loadDiaryList = () => {
+            const myDiary = JSON.parse(localStorage.getItem("diaries"));
+            if (myDiary === null) {
+                diaryList = sampleDiary
+            } else {
+                diaryList = myDiary
+            }
+        };
+        loadDiaryList();
+
+        // 쿼리스트링
+        const queryString = location.search;
+        const detailPages = new URLSearchParams(queryString);
+        // main.js에서 쿼리스트링 value로 불러온 prevIndex값을 currentIndex에 할당
+        // URLSearchParams.get()가 문자열을 반환하므로 숫자로 변환
+        const currentIndex = Number(detailPages.get("index"));
+        
+        // 클릭한 카드의 일기를 인덱스값 이용해 불러오기
+        const currentDiary = diaryList[currentIndex];
+
+        // 댓글 div 생성 함수
+        const createComment = (comment) => {
+            return `
+            <div class="comment__contetn__wrapper">
+                <div class="comment__content">${comment.content}</div>
+                <div class="comment__date">${comment.date}</div>
+            </div>
+            `;
+        };
+
+        const myComment = JSON.parse(localStorage.getItem("comments")) || []
+
+        
+        // 댓글 등록 시 내용 저장
+        const storeComment = () => {
+            // 댓글 내용과 인덱스 객체로 저장
+            const today = new Date();
+            const newComment = {
+                diaryId: currentDiary.diaryId,
+                content: document.getElementById("writeContent").value.trim(),
+                date: today.getFullYear() + ". " + (today.getMonth() + 1) + ". " + today.getDate()
+            }
+            // 입력창 비우기
+            document.getElementById("writeContent").value = null;
+            
+            const myComment = JSON.parse(localStorage.getItem("comments")) || []
+            myComment.push(newComment);
+            localStorage.setItem("comments", JSON.stringify(myComment) );
+            
+        }
+        
+        // 현재 페이지에 불러올 댓글 목록 filter
+        const currentCommentList = myComment.filter((comment) => {
+            return comment.diaryId === currentDiary.DiaryId;
+        })
+       
+
+    </script>
+    <style>
+        * {
+        box-sizing: border-box;
+        margin: 0px;
+        font-family: Pretendard
+        }
+        body {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        button {
+            cursor: pointer;
+        }
+        .scroll {
+            width: 40px;
+            height: 40px;
+            position: fixed;
+            left: 85%;
+            top: 90%;
+        }
+        .container {
+            width: 1168px;
+            height: 100%;
+            margin: 0px 376px;
+        }
+        .header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        .header__content {
+            width: 1168px;
+            height: 60px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header__title {
+            width: 120px;
+            height: 60px;
+            font-weight: 700;
+            font-style: Bold;
+            font-size: 18px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .header__darkmode {
+            width: 121px;
+            height: 32px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            color: #1C1C1C;
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: -1%;
+        }
+        .toggle {
+            appearance: none;
+            width: 58px;
+            height: 32px;
+            background-color: #E4E4E4;
+            border-radius: 100px;
+            padding: 2px;
+        }
+        .toggle::after {
+            display: block;
+            content: "";
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: #FFFFFF;
+            transition: transform 0.3s ease;
+        }
+        .toggle:checked{
+            background-color: #3AD84A;
+        }
+        .toggle:checked::after {
+            transform: translateX(calc(100% - 1px - 1px));
+        }
+        .body {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            margin-top: 84px;
+        }
+        .body__header {
+            width: 100%;
+            height: 84px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .body__header__title {
+            width: 100%;
+            height: 36px;
+            border-bottom: 2px solid black;
+            font-size: 22px;
+            font-weight: 700;
+            padding-bottom: 12px;
+        }
+        .body__header__subtitle {
+            width: 100%;
+            height: 32px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .body__content {
+            width: 100%;
+            margin: 24px 0px;
+            border-bottom: 1px solid black;
+            padding-bottom: 16px;
+        }
+        .body__content__title {
+            width: 100%;
+            height: 20px;
+            font-weight: 600;
+        }
+        .body__content__text {
+            width: 100%;
+            height: 100px;
+            margin: 12px 0px;
+            font-weight: 500;
+        }
+        .body__content__copy {
+            width: 100%;
+            height: 24px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            font-weight: 400;
+            cursor: pointer;
+        }
+        .body__content__button {
+            width: 100%;
+            height: 40px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            margin-top: 16px;
+        }
+        .btn1 {
+            width: 51px;
+            height: 40px;
+            border: 1px solid #D4D3D3;
+            border-radius: 8px;
+            margin-left: 16px;
+            background-color: white;
+        }
+        .body__comment {
+            width: 100%;
+            height: 100%px;
+            margin-top: 24px;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+        .body__comment__title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 13px;
+        }
+        .body__comment__input {
+            width: 100%;
+            height: 48px;
+            margin-bottom: 16px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .comment__input__text {
+            width: 1101px;
+            height: 48px;
+            padding-top: 12px;
+            padding: 16px 12px;
+            border: 1px solid #D4D3D3;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        .comment__input__btn {
+            width: 51px;
+            height: 48px;
+            padding: 8px 10px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            font-size: 18px;
+            background-color: black;
+            color: white;
+            letter-spacing: -1%;
+
+        }
+        .body__comment__container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .comment__contetn__wrapper{
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .comment__content {
+            font-weight: 500;
+            font-size: 16px;
+            margin-right: 12px;
+        }
+         .comment__date{
+            font-weight: 400;
+            font-size: 16px;
+            color: #777777;
+        }
+        .copy__toast{
+            width: 760px;
+            height: 56px;
+            top: 984px;
+            left: 580px;
+            gap: 10px;
+            border-radius: 8px;
+            padding: 16px;
+            background-color: #000000;
+            color: #FFFFFF;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+        }
+        .copy__toast.show {
+            animation-name: animation;
+            animation-duration: 3s;
+        }
+
+        @keyframes animation {
+            0% {
+                opacity: 0;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        .footer {
+            width: 100%;
+            height: 160px;
+            background-color: #F2F2F2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .footer__content {
+            width: 1168px;
+            height: 112px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        
+
+    </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <div class="header__title">나의 다이어리</div>
+            <div class="header__content">
+                <div class="header__title">나의 다이어리</div>
+                <!-- 토글 -->
+                <div class="header__darkmode">
+                    다크모드
+                    <input type="checkbox" class="toggle">
+                </div>
+            </div>
         </div>
+        <a href="#">
+            <img class="scroll" src="./image/up_outline_light_xl.png"></img>
+        </a>
         <div class="body">
             <div class="body__header">
-                <div class="body__header__title">이것은 타이틀 입니다.</div>
+                <div class="body__header__title" id="title">이것은 타이틀 입니다.</div>
                 <div class="body__header__subtitle">
-                    <div class="body__header__subtitle__emotion">감정</div>
-                    <div class="body__header__subtitle__date">날짜</div>
+                    <div class="body__header__subtitle__emotion" id="emotion">감정</div>
+                    <div class="body__header__subtitle__date" id="date">날짜</div>
                 </div>
             </div>
             <div class="body__content">
-                <div class="body__content__title">내용</div>
-                <div class="body__content__text" id="diaryContent">내용이들어갑니다</div>
+                <div class="body__content__title">내용</div> 
+                <div class="body__content__text" id="content">내용이들어갑니다</div>
                 <div class="body__content__copy" id="copyBtn">
                     <img>내용 복사
                 </div>
@@ -32,24 +476,29 @@ x<!DOCTYPE html>
             <div class="body__comment">
                 <div class="body__comment__title">회고</div>
                 <div class="body__comment__input">
-                    <input type="text" placeholder="회고를 남겨보세요." class="comment__input__text" id="commentContent">
-                    <button class="comment__input__btn" onclick="comment()">입력</button>
+                    <input type="text" placeholder="회고를 남겨보세요." class="comment__input__text" id="writeContent">
+                    <button class="comment__input__btn" onclick="storeComment();">입력</button>
                 </div>
-                <div class="body__comment__contents">
+                <div class="body__comment__container" id="commentContainer">
                     <div>등록된 회고가 없습니다.</div>
                 </div>
             </div>
         </div>   
     </div>
-    <div class="copy__toast" id="copyToast">
+    <div class="copy__toast" id="copyToast" onclick="openToast()">
         내용이 복사되었습니다.
     </div>
-    <div class="footer">
-        <div class="footer__content">
-            <div class="footer__title">나의 다이어리</div>
-            <div class="footer__name">대표</div>
-            <div class="footer__copyright">Copyright © 2024. {name} Co., Ltd.</div>
-      </div>
-    </div>
+    <script>
+        // 일기 내용 불러오기
+        document.getElementById("title").innerHTML = (currentDiary.title);
+        document.getElementById("emotion").innerHTML = (currentDiary.emotion);
+        document.getElementById("date").innerHTML = (currentDiary.date);
+        document.getElementById("content").innerHTML = (currentDiary.content);
+
+         // 불러온 댓글 div 생성해 넣기
+        document.getElementById("commentContainer").innerHTML = currentCommentList.map((comment) => {
+            return createComment(comment)
+        }).join("")
+    </script>
 </body>
 </html>
